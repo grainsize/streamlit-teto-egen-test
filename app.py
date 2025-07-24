@@ -112,7 +112,7 @@ teto_score = 0
 egen_score = 0
 
 for i, (q, category) in enumerate(questions):
-    st.markdown(f"<p style='font-size:22px; font-weight:600'>{q}</p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='font-size:22px; font-weight:600; margin:0 0 6px 0;'>{q}</p>", unsafe_allow_html=True)
     answer = st.radio("", options, key=f"q_{i}")
     score = score_map[answer]
     if category == "teto":
