@@ -1,12 +1,6 @@
 import streamlit as st
 import random
 import matplotlib.pyplot as plt
-from matplotlib import rcParams
-import matplotlib.font_manager as fm
-
-# ✅ 한글 폰트 설정 (파이 차트 글자 깨짐 방지)
-rcParams['font.family'] = 'NanumGothic'  # Streamlit Cloud에서는 'NanumGothic'이 잘 적용됨
-plt.rcParams['axes.unicode_minus'] = False
 
 # 질문 목록 (카테고리는 계산에만 사용되고 사용자에게는 보이지 않음)
 questions = [
@@ -171,7 +165,7 @@ if st.button("결과 보기"):
         st.write(f"에겐 성향 비율: {egen_percent:.1f}%")
 
         fig, ax = plt.subplots()
-        labels = ['테토', '에겐']
+        labels = ['Teto', 'Egen']
         sizes = [teto_percent, egen_percent]
         colors = ['#66b3ff', '#ff9999']
         ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90, colors=colors)
