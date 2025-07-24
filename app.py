@@ -66,11 +66,11 @@ descriptions = {
 }
 
 images = {
-    "테토남": "images/Teto_male.jpg",
-    "에겐남": "images/Egen_male.jpg",
-    "테토녀": "images/Teto_female.jpg",
-    "에겐녀": "images/Egen_female.jpg",
-    "혼합형": "images/Balanced.jpg"
+    "테토남": "image/Teto_male.jpg",
+    "에겐남": "image/Egen_male.jpg",
+    "테토녀": "image/Teto_female.jpg",
+    "에겐녀": "image/Egen_female.jpg",
+    "혼합형": "image/Balanced.jpg"
 }
 
 # 스타일 삽입
