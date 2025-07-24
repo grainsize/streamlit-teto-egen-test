@@ -86,7 +86,6 @@ descriptions = {
 
 # 성향별 이미지
 images = {
-images = {
     "테토남": "https://images.unsplash.com/photo-1610563166154-9b7be0b11a06?auto=format&fit=crop&w=1200&q=80",
     # 회의실에서 진지한 표정으로 노트북 작업 중인 남성 (분석적, 집중)
     
@@ -101,7 +100,6 @@ images = {
 
     "혼합형": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80"
     # 양손에 책과 커피를 든 사람 또는 자연과 도시가 조화된 이미지 (이성과 감성의 조화)
-}
 }
 
 # Streamlit 앱 시작
