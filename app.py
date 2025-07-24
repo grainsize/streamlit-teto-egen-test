@@ -112,7 +112,8 @@ teto_score = 0
 egen_score = 0
 
 for i, (q, category) in enumerate(questions):
-    answer = st.radio(q, options, key=f"q_{i}")
+    styled_q = f"<span style='font-size:22px'>{q}</span>"
+    answer = st.radio(styled_q, options, key=f"q_{i}", unsafe_allow_html=True)
     score = score_map[answer]
     if category == "teto":
         teto_score += score
