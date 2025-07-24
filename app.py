@@ -56,7 +56,7 @@ st.markdown("""
             border: 1px solid #ccc;
             border-radius: 10px;
             padding: 20px;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             background-color: #e8e8e8;
         }
         .question-text {
