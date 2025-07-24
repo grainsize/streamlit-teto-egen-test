@@ -113,30 +113,35 @@ egen_score = 0
 
 for i, (q, category) in enumerate(questions):
     with st.container():
+        # 카드 전체 시작
         st.markdown(
             f"""
             <div style='
-                border: 1px solid #ddd;
-                border-radius: 8px;
-                padding: 12px 16px;
-                margin-bottom: 16px;
-                background-color: #f9f9f9;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                padding: 16px;
+                margin-bottom: 20px;
+                background-color: #f7f7f7;
             '>
-                <div style='font-size: 20px; font-weight: 600; margin-bottom: 8px;'>
+                <div style='font-size: 20px; font-weight: 600; margin-bottom: 12px;'>
                     {q}
                 </div>
             """,
             unsafe_allow_html=True
         )
+
+        # radio 버튼은 HTML 안에 넣을 수 없으므로 이 아래에 위치해야 합니다.
         answer = st.radio(" ", options, key=f"q_{i}")
+        
+        # 카드 닫기
+        st.markdown("</div>", unsafe_allow_html=True)
+
+        # 점수 계산
         score = score_map[answer]
         if category == "teto":
             teto_score += score
         else:
             egen_score += score
-
-        # 닫는 div (필수)
-        st.markdown("</div>", unsafe_allow_html=True)
 
 if st.button("결과 보기"):
     result_type, teto_percent, egen_percent = calculate_result(gender, teto_score, egen_score)
