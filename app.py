@@ -113,7 +113,7 @@ egen_score = 0
 
 for i, (q, category) in enumerate(questions):
     st.markdown(
-        f"<div style='font-size:22px; font-weight:600; line-height:1.1; margin:11px 0 2px 0;'>{q}</div>",
+        f"<div style='font-size:22px; font-weight:600; line-height:1.1; margin:11px 0 0 0;'>{q}</div>",
         unsafe_allow_html=True
     )
     answer = st.radio(" ", options, key=f"q_{i}")
