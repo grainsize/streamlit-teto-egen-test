@@ -2,6 +2,10 @@ import streamlit as st
 import random
 import matplotlib.pyplot as plt
 
+# ✅ 한글 폰트 설정 (파이 차트 글자 깨짐 방지)
+rcParams['font.family'] = 'NanumGothic'  # Streamlit Cloud에서는 'NanumGothic'이 잘 적용됨
+plt.rcParams['axes.unicode_minus'] = False
+
 # 질문 목록 (카테고리는 계산에만 사용되고 사용자에게는 보이지 않음)
 questions = [
     ("나는 감정을 드러내기보다 속으로 처리하는 편이다.", "teto"),
