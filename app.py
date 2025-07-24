@@ -86,11 +86,22 @@ descriptions = {
 
 # 성향별 이미지
 images = {
-    "테토남": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
-    "에겐남": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
-    "테토녀": "https://images.unsplash.com/photo-1581092334420-9d8d6ec9d2f2?auto=format&fit=crop&w=1200&q=80",
-    "에겐녀": "https://images.unsplash.com/photo-1518611012118-fb62b1a5d82b?auto=format&fit=crop&w=1200&q=80",
-    "혼합형": "https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=1200&q=80"
+images = {
+    "테토남": "https://images.unsplash.com/photo-1610563166154-9b7be0b11a06?auto=format&fit=crop&w=1200&q=80",
+    # 회의실에서 진지한 표정으로 노트북 작업 중인 남성 (분석적, 집중)
+    
+    "에겐남": "https://images.unsplash.com/photo-1594824476967-48c8b9642731?auto=format&fit=crop&w=1200&q=80",
+    # 자연 속에서 따뜻하게 웃는 남성 (감성적이고 공감하는 분위기)
+
+    "테토녀": "https://images.unsplash.com/photo-1586281380381-52c3ea5484d2?auto=format&fit=crop&w=1200&q=80",
+    # 프레젠테이션하며 팀을 리드하는 여성 (자신감, 이성적 리더십)
+
+    "에겐녀": "https://images.unsplash.com/photo-1617038491894-5b18d376ef1b?auto=format&fit=crop&w=1200&q=80",
+    # 따뜻한 미소로 대화하는 여성 (공감, 친근함, 정서적 소통)
+
+    "혼합형": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80"
+    # 양손에 책과 커피를 든 사람 또는 자연과 도시가 조화된 이미지 (이성과 감성의 조화)
+}
 }
 
 # Streamlit 앱 시작
@@ -115,7 +126,7 @@ if st.button("결과 보기"):
 
     st.markdown("---")
     st.header(f"✅ 당신은 '{result_type}'입니다.")
-    st.image(images[result_type], use_column_width=True)
+    st.image(images[result_type], use_container_width=True)
     st.write(f"테토 성향 비율: {teto_percent:.1f}%")
     st.write(f"에겐 성향 비율: {egen_percent:.1f}%")
 
