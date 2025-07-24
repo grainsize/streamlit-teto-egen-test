@@ -62,7 +62,7 @@ st.markdown("""
         .question-text {
             font-size: 20px;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
         .stRadio > div {
             margin-top: -10px;
