@@ -48,22 +48,21 @@ def calculate_result(gender, teto_score, egen_score):
     else:
         return "혼합형", teto_percent, egen_percent
 
-# ✅ [추가된 부분 1] 성향별 설명
+# ✅ 성향별 설명
 descriptions = {
     "테토남": "🧠 논리적이고 목표 지향적인 리더형 남성",
     "에겐남": "💓 따뜻하고 공감력이 뛰어난 감성형 남성",
     "테토녀": "📐 이성적이고 주도적인 전략가형 여성",
     "에겐녀": "🌷 감성적이고 따뜻한 공감형 여성",
     "혼합형": "⚖️ 이성과 감성의 균형을 갖춘 유연형"
-}
 
-# ✅ [추가된 부분 1] 성향별 이미지
 images = {
     "테토남": "https://images.unsplash.com/photo-1610563166154-9b7be0b11a06?auto=format&fit=crop&w=1200&q=80",
     "에겐남": "https://images.unsplash.com/photo-1594824476967-48c8b9642731?auto=format&fit=crop&w=1200&q=80",
     "테토녀": "https://images.unsplash.com/photo-1586281380381-52c3ea5484d2?auto=format&fit=crop&w=1200&q=80",
     "에겐녀": "https://images.unsplash.com/photo-1617038491894-5b18d376ef1b?auto=format&fit=crop&w=1200&q=80",
     "혼합형": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80"
+}
 }
 
 # 스타일 삽입
