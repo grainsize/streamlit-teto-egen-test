@@ -55,6 +55,7 @@ descriptions = {
     "테토녀": "📐 이성적이고 주도적인 전략가형 여성",
     "에겐녀": "🌷 감성적이고 따뜻한 공감형 여성",
     "혼합형": "⚖️ 이성과 감성의 균형을 갖춘 유연형"
+}
 
 images = {
     "테토남": "https://images.unsplash.com/photo-1610563166154-9b7be0b11a06?auto=format&fit=crop&w=1200&q=80",
@@ -62,7 +63,6 @@ images = {
     "테토녀": "https://images.unsplash.com/photo-1586281380381-52c3ea5484d2?auto=format&fit=crop&w=1200&q=80",
     "에겐녀": "https://images.unsplash.com/photo-1617038491894-5b18d376ef1b?auto=format&fit=crop&w=1200&q=80",
     "혼합형": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80"
-}
 }
 
 # 스타일 삽입
