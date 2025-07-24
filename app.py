@@ -112,16 +112,31 @@ teto_score = 0
 egen_score = 0
 
 for i, (q, category) in enumerate(questions):
-    st.markdown(
-        f"<div style='font-size:22px; font-weight:600; line-height:1.0; margin:20px 0 0 0;'>{q}</div>",
-        unsafe_allow_html=True
-    )
-    answer = st.radio(" ", options, key=f"q_{i}")
-    score = score_map[answer]
-    if category == "teto":
-        teto_score += score
-    else:
-        egen_score += score
+    with st.container():
+        st.markdown(
+            f"""
+            <div style='
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                padding: 12px 16px;
+                margin-bottom: 16px;
+                background-color: #f9f9f9;
+            '>
+                <div style='font-size: 20px; font-weight: 600; margin-bottom: 8px;'>
+                    {q}
+                </div>
+            """,
+            unsafe_allow_html=True
+        )
+        answer = st.radio(" ", options, key=f"q_{i}")
+        score = score_map[answer]
+        if category == "teto":
+            teto_score += score
+        else:
+            egen_score += score
+
+        # 닫는 div (필수)
+        st.markdown("</div>", unsafe_allow_html=True)
 
 if st.button("결과 보기"):
     result_type, teto_percent, egen_percent = calculate_result(gender, teto_score, egen_score)
