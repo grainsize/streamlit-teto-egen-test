@@ -1,6 +1,8 @@
 import streamlit as st
 import random
 import matplotlib.pyplot as plt
+from matplotlib import rcParams
+import matplotlib.font_manager as fm
 
 # ✅ 한글 폰트 설정 (파이 차트 글자 깨짐 방지)
 rcParams['font.family'] = 'NanumGothic'  # Streamlit Cloud에서는 'NanumGothic'이 잘 적용됨
