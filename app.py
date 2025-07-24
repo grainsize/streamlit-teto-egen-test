@@ -48,7 +48,24 @@ def calculate_result(gender, teto_score, egen_score):
     else:
         return "혼합형", teto_percent, egen_percent
 
-# 설명과 이미지 생략 (변경 없음)
+# ✅ [추가된 부분 1] 성향별 설명
+descriptions = {
+    "테토남": "🧠 논리적이고 목표 지향적인 리더형 남성",
+    "에겐남": "💓 따뜻하고 공감력이 뛰어난 감성형 남성",
+    "테토녀": "📐 이성적이고 주도적인 전략가형 여성",
+    "에겐녀": "🌷 감성적이고 따뜻한 공감형 여성",
+    "혼합형": "⚖️ 이성과 감성의 균형을 갖춘 유연형"
+}
+
+# ✅ [추가된 부분 1] 성향별 이미지
+images = {
+    "테토남": "https://images.unsplash.com/photo-1610563166154-9b7be0b11a06?auto=format&fit=crop&w=1200&q=80",
+    "에겐남": "https://images.unsplash.com/photo-1594824476967-48c8b9642731?auto=format&fit=crop&w=1200&q=80",
+    "테토녀": "https://images.unsplash.com/photo-1586281380381-52c3ea5484d2?auto=format&fit=crop&w=1200&q=80",
+    "에겐녀": "https://images.unsplash.com/photo-1617038491894-5b18d376ef1b?auto=format&fit=crop&w=1200&q=80",
+    "혼합형": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80"
+}
+
 # 스타일 삽입
 st.markdown("""
     <style>
@@ -99,21 +116,25 @@ for i, (q, category) in enumerate(questions):
                 else:
                     egen_score += score
 
+# ✅ [추가된 부분 2] 성별 선택 안 했을 경우 경고
 if st.button("결과 보기"):
-    result_type, teto_percent, egen_percent = calculate_result(gender, teto_score, egen_score)
+    if gender is None:
+        st.warning("성별을 선택해주세요.")
+    else:
+        result_type, teto_percent, egen_percent = calculate_result(gender, teto_score, egen_score)
 
-    st.markdown("---")
-    st.header(f"✅ 당신은 '{result_type}'입니다.")
-    st.image(images[result_type], use_container_width=True)
-    st.write(f"테토 성향 비율: {teto_percent:.1f}%")
-    st.write(f"에겐 성향 비율: {egen_percent:.1f}%")
+        st.markdown("---")
+        st.header(f"✅ 당신은 '{result_type}'입니다.")
+        st.image(images[result_type], use_container_width=True)
+        st.write(f"테토 성향 비율: {teto_percent:.1f}%")
+        st.write(f"에겐 성향 비율: {egen_percent:.1f}%")
 
-    fig, ax = plt.subplots()
-    labels = ['테토', '에겐']
-    sizes = [teto_percent, egen_percent]
-    colors = ['#66b3ff', '#ff9999']
-    ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90, colors=colors)
-    ax.axis('equal')
-    st.pyplot(fig)
+        fig, ax = plt.subplots()
+        labels = ['테토', '에겐']
+        sizes = [teto_percent, egen_percent]
+        colors = ['#66b3ff', '#ff9999']
+        ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90, colors=colors)
+        ax.axis('equal')
+        st.pyplot(fig)
 
-    st.markdown(descriptions[result_type])
+        st.markdown(descriptions[result_type])
