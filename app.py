@@ -56,8 +56,8 @@ st.markdown("""
             border: 1px solid #ccc;
             border-radius: 10px;
             padding: 20px;
-            margin-bottom: 10px;
-            background-color: #e8e8e8;
+            margin-bottom: 5px;
+            background-color: #f2f2f2;
         }
         .question-text {
             font-size: 20px;
