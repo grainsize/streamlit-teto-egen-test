@@ -72,7 +72,14 @@ st.markdown("""
 
 st.title("🧠 테토/에겐 성향 테스트")
 
-gender = st.radio("당신의 성별은?", ["남성", "여성"])
+with st.container():
+    with st.expander("", expanded=True):
+        st.markdown("""
+            <div class='card'>
+                <div class='question-text'>당신의 성별은?</div>
+            """, unsafe_allow_html=True)
+        gender = st.radio(" ", ["남성", "여성"], index=None)
+        st.markdown("</div>", unsafe_allow_html=True)
 
 st.subheader("📝 아래 문항에 응답해주세요")
 teto_score = 0
