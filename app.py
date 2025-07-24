@@ -48,24 +48,39 @@ def calculate_result(gender, teto_score, egen_score):
     else:
         return "혼합형", teto_percent, egen_percent
 
-# 설명과 이미지 생략 (변경 없음)
-# 스타일 삽입
+# 성향별 설명
+descriptions = {
+    "테토남": "🧠 논리적이고 목표 지향적인 리더형 남성",
+    "에겐남": "💓 따뜻하고 공감력이 뛰어난 감성형 남성",
+    "테토녀": "📐 이성적이고 주도적인 전략가형 여성",
+    "에겐녀": "🌷 감성적이고 따뜻한 공감형 여성",
+    "혼합형": "⚖️ 이성과 감성의 균형을 갖춘 유연형"
+}
+
+images = {
+    "테토남": "https://images.unsplash.com/photo-1610563166154-9b7be0b11a06?auto=format&fit=crop&w=1200&q=80",
+    "에겐남": "https://images.unsplash.com/photo-1594824476967-48c8b9642731?auto=format&fit=crop&w=1200&q=80",
+    "테토녀": "https://images.unsplash.com/photo-1586281380381-52c3ea5484d2?auto=format&fit=crop&w=1200&q=80",
+    "에겐녀": "https://images.unsplash.com/photo-1617038491894-5b18d376ef1b?auto=format&fit=crop&w=1200&q=80",
+    "혼합형": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80"
+}
+
 st.markdown("""
     <style>
         .card {
-            border: 1px solid #ccc;
+            border: 1px solid #bbb;
             border-radius: 10px;
             padding: 20px;
-            margin-bottom: 0px;
-            background-color: #f2f2f2;
+            margin-bottom: 10px;
+            background-color: #cccccc;
         }
         .question-text {
             font-size: 20px;
             font-weight: 600;
-            margin-bottom: 0px;
+            margin-bottom: 12px;
         }
         .stRadio > div {
-            margin-top: -10px;
+            margin-top: -8px;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -73,31 +88,31 @@ st.markdown("""
 st.title("🧠 테토/에겐 성향 테스트")
 
 with st.container():
-    with st.expander("", expanded=True):
-        st.markdown("""
-            <div class='card'>
-                <div class='question-text'>당신의 성별은?</div>
-            """, unsafe_allow_html=True)
-        gender = st.radio(" ", ["남성", "여성"], index=None)
-        st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("""
+        <div class='card'>
+            <div class='question-text'>당신의 성별은?</div>
+    """, unsafe_allow_html=True)
+    gender = st.radio(" ", ["남성", "여성"], index=None)
+    st.markdown("</div>", unsafe_allow_html=True)
 
-st.subheader("📝 아래 문항에 응답해주세요")
 teto_score = 0
 egen_score = 0
 
 for i, (q, category) in enumerate(questions):
     with st.container():
-        with st.expander("", expanded=True):
-            st.markdown(f"<div class='card'><div class='question-text'>{q}</div>", unsafe_allow_html=True)
-            answer = st.radio(" ", options, key=f"q_{i}", index=None)
-            st.markdown("</div>", unsafe_allow_html=True)
+        st.markdown(f"""
+            <div class='card'>
+                <div class='question-text'>{q}</div>
+        """, unsafe_allow_html=True)
+        answer = st.radio(" ", options, key=f"q_{i}", index=None)
+        st.markdown("</div>", unsafe_allow_html=True)
 
-            if answer:
-                score = score_map[answer]
-                if category == "teto":
-                    teto_score += score
-                else:
-                    egen_score += score
+        if answer:
+            score = score_map[answer]
+            if category == "teto":
+                teto_score += score
+            else:
+                egen_score += score
 
 if st.button("결과 보기"):
     result_type, teto_percent, egen_percent = calculate_result(gender, teto_score, egen_score)
