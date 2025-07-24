@@ -56,13 +56,13 @@ st.markdown("""
             border: 1px solid #ccc;
             border-radius: 10px;
             padding: 20px;
-            margin-bottom: 5px;
+            margin-bottom: 0px;
             background-color: #f2f2f2;
         }
         .question-text {
             font-size: 20px;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 0px;
         }
         .stRadio > div {
             margin-top: -10px;
