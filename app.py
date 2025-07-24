@@ -2,6 +2,27 @@ import streamlit as st
 import random
 import matplotlib.pyplot as plt
 
+# 스타일 정의 (문항+보기를 카드처럼 보여주기 위한 CSS)
+st.markdown("""
+    <style>
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 16px;
+        margin-bottom: 20px;
+        background-color: #f7f7f7;
+    }
+    .question-text {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 12px;
+    }
+    .stRadio > div {
+        padding-left: 10px;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 # 질문 목록 (카테고리는 계산에만 사용되고 사용자에게는 보이지 않음)
 questions = [
     ("나는 감정을 드러내기보다 속으로 처리하는 편이다.", "teto"),
@@ -49,25 +70,25 @@ def calculate_result(gender, teto_score, egen_score):
     else:
         return "혼합형", teto_percent, egen_percent
 
-# 성향별 설명
+# 성향별 설명 (생략 없이 그대로 유지)
 descriptions = {
     "테토남": (
-        "🧠 **테토남** ｜ 논리적이고 목표 지향적인 리더형 남성\n\n"
+        "\U0001f9e0 **테토남** ｜ 논리적이고 목표 지향적인 리더형 남성\n\n"
         "당신은 논리적 사고와 명확한 목표 지향성을 바탕으로 스스로를 이끄는 **테토남** 유형입니다. "
-        "📊 문제 해결을 위한 분석과 전략 수립에 능하며, 감정보다는 이성을 우선시하려는 경향이 있습니다. "
-        "🏁 자신만의 기준과 방향이 분명하고, 경쟁 상황에서도 자신감을 가지고 적극적으로 임합니다. "
-        "🏗️ 조직 내에서 역할과 구조가 명확할 때 안정감을 느끼며, 리더십을 발휘하는 데에도 거리낌이 없습니다."
+        "\U0001f4ca 문제 해결을 위한 분석과 전략 수립에 능하며, 감정보다는 이성을 우선시하려는 경향이 있습니다. "
+        "\U0001f3c1 자신만의 기준과 방향이 분명하고, 경쟁 상황에서도 자신감을 가지고 적극적으로 임합니다. "
+        "\U0001f3d7️ 조직 내에서 역할과 구조가 명확할 때 안정감을 느끼며, 리더십을 발휘하는 데에도 거리낌이 없습니다."
     ),
     "에겐남": (
         "💓 **에겐남** ｜ 따뜻하고 공감력이 뛰어난 감성형 남성\n\n"
         "당신은 감정의 흐름을 잘 읽고 타인의 감정에 깊이 공감하는 따뜻한 **에겐남** 유형입니다. "
-        "🌈 관계와 조화를 중요하게 여기며, 분위기와 표정 같은 신호에도 민감하게 반응합니다. "
-        "🤝 힘든 사람에게 공감과 위로를 전하며, 감정 표현을 통해 관계를 깊게 만들어갑니다."
+        "\U0001f308 관계와 조화를 중요하게 여기며, 분위기와 표정 같은 신호에도 민감하게 반응합니다. "
+        "\U0001f91d 힘든 사람에게 공감과 위로를 전하며, 감정 표현을 통해 관계를 깊게 만들어갑니다."
     ),
     "테토녀": (
-        "📐 **테토녀** ｜ 이성적이고 주도적인 전략가형 여성\n\n"
+        "📀 **테토녀** ｜ 이성적이고 주도적인 전략가형 여성\n\n"
         "당신은 이성적이고 체계적인 사고를 바탕으로 능동적으로 삶을 이끄는 **테토녀** 유형입니다. "
-        "🗂️ 계획을 세우고 효율을 중시하며, 감정보다 구조와 논리에 따라 움직입니다. "
+        "\U0001f5c2️ 계획을 세우고 효율을 중시하며, 감정보다 구조와 논리에 따라 움직입니다. "
         "👑 리더십을 발휘하고 책임감 있게 행동하며, 독립적인 성향이 강합니다."
     ),
     "에겐녀": (
@@ -80,31 +101,21 @@ descriptions = {
         "⚖️ **혼합형** ｜ 이성과 감성의 균형을 갖춘 유연형\n\n"
         "당신은 상황에 따라 논리와 감정을 균형 있게 활용하는 **혼합형** 성향입니다. "
         "🔀 분석과 공감을 모두 중요하게 생각하며, 유연하고 조화로운 성향을 지녔습니다. "
-        "🤲 다양한 상황에서 조율자나 중재자로서의 역량을 발휘합니다."
+        "🩊 다양한 상황에서 조율자나 중재자로서의 역량을 발휘합니다."
     )
 }
 
 # 성향별 이미지
 images = {
     "테토남": "https://images.unsplash.com/photo-1610563166154-9b7be0b11a06?auto=format&fit=crop&w=1200&q=80",
-    # 회의실에서 진지한 표정으로 노트북 작업 중인 남성 (분석적, 집중)
-    
     "에겐남": "https://images.unsplash.com/photo-1594824476967-48c8b9642731?auto=format&fit=crop&w=1200&q=80",
-    # 자연 속에서 따뜻하게 웃는 남성 (감성적이고 공감하는 분위기)
-
     "테토녀": "https://images.unsplash.com/photo-1586281380381-52c3ea5484d2?auto=format&fit=crop&w=1200&q=80",
-    # 프레젠테이션하며 팀을 리드하는 여성 (자신감, 이성적 리더십)
-
     "에겐녀": "https://images.unsplash.com/photo-1617038491894-5b18d376ef1b?auto=format&fit=crop&w=1200&q=80",
-    # 따뜻한 미소로 대화하는 여성 (공감, 친근함, 정서적 소통)
-
     "혼합형": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80"
-    # 양손에 책과 커피를 든 사람 또는 자연과 도시가 조화된 이미지 (이성과 감성의 조화)
 }
 
 # Streamlit 앱 시작
 st.title("🧠 테토/에겐 성향 테스트")
-
 gender = st.radio("당신의 성별은?", ["남성", "여성"])
 
 st.subheader("📝 아래 문항에 응답해주세요")
@@ -113,30 +124,11 @@ egen_score = 0
 
 for i, (q, category) in enumerate(questions):
     with st.container():
-        # 카드 전체 시작
-        st.markdown(
-            f"""
-            <div style='
-                border: 1px solid #ccc;
-                border-radius: 10px;
-                padding: 16px;
-                margin-bottom: 20px;
-                background-color: #f7f7f7;
-            '>
-                <div style='font-size: 20px; font-weight: 600; margin-bottom: 12px;'>
-                    {q}
-                </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-        # radio 버튼은 HTML 안에 넣을 수 없으므로 이 아래에 위치해야 합니다.
+        st.markdown(f"<div class='card'>", unsafe_allow_html=True)
+        st.markdown(f"<div class='question-text'>{q}</div>", unsafe_allow_html=True)
         answer = st.radio(" ", options, key=f"q_{i}")
-        
-        # 카드 닫기
         st.markdown("</div>", unsafe_allow_html=True)
 
-        # 점수 계산
         score = score_map[answer]
         if category == "teto":
             teto_score += score
